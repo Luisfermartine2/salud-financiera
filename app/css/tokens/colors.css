@@ -1,0 +1,28 @@
+:root{
+--navy-950:#060f1f;--navy-900:#0b1f3a;--navy-800:#122a4d;--navy-700:#1c3a63;--navy-600:#2c5384;--navy-500:#3d6ba8;
+--gold-600:#a97e1c;--gold-500:#d4af37;--gold-400:#e3c665;--gold-300:#efdda0;
+--green-600:#0d8a52;--green-500:#1ba368;--red-600:#c8394a;--red-500:#dd5265;
+--ink-0:#ffffff;--ink-50:#f7f8fa;--ink-100:#eef0f4;--ink-200:#dde1e8;--ink-300:#c3c9d4;--ink-400:#8a93a6;--ink-600:#5a6478;--ink-800:#2a3244;--ink-950:#0b0e14;
+
+--bg:var(--ink-50);--surface:var(--ink-0);--surface-2:var(--ink-100);--border:var(--ink-200);--border-strong:var(--ink-300);
+--text-primary:var(--navy-900);--text-secondary:var(--ink-600);--text-tertiary:var(--ink-400);--text-on-brand:var(--ink-0);
+--brand:var(--navy-900);--accent:var(--gold-500);--accent-strong:var(--gold-600);
+--gain:var(--green-600);--gain-soft:rgba(13,138,82,.12);--loss:var(--red-600);--loss-soft:rgba(200,57,74,.1);
+}
+:root[data-theme="dark"]{
+--bg:#0a1120;--surface:#111a2c;--surface-2:#182238;--border:rgba(255,255,255,.08);--border-strong:rgba(255,255,255,.16);
+--text-primary:#f3f5f9;--text-secondary:#9aa5ba;--text-tertiary:#6a7690;--text-on-brand:#0b1220;
+--brand:var(--gold-400);--accent:var(--gold-400);--accent-strong:var(--gold-300);
+--gain:#22c58d;--gain-soft:rgba(34,197,141,.14);--loss:#ff6b76;--loss-soft:rgba(255,107,118,.12);
+}
+/* Auto dark theme following the OS preference — the design system supports
+   toggling via data-theme OR prefers-color-scheme. An explicit data-theme
+   attribute (set by the in-app toggle) always wins over the OS preference. */
+@media (prefers-color-scheme: dark){
+:root:not([data-theme="light"]){
+--bg:#0a1120;--surface:#111a2c;--surface-2:#182238;--border:rgba(255,255,255,.08);--border-strong:rgba(255,255,255,.16);
+--text-primary:#f3f5f9;--text-secondary:#9aa5ba;--text-tertiary:#6a7690;--text-on-brand:#0b1220;
+--brand:var(--gold-400);--accent:var(--gold-400);--accent-strong:var(--gold-300);
+--gain:#22c58d;--gain-soft:rgba(34,197,141,.14);--loss:#ff6b76;--loss-soft:rgba(255,107,118,.12);
+}
+}
