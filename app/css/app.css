@@ -93,14 +93,15 @@ input::placeholder { color: var(--text-tertiary); }
 }
 .theme-toggle:hover { border-color: var(--accent); color: var(--accent-strong); }
 
-/* Transición suave entre pasos */
-.step { animation: step-in var(--dur-normal) var(--ease-standard); }
+/* Transición suave entre pasos. Solo se aplica al CAMBIAR de paso (clase
+   is-enter), nunca en los re-render por tecleo, para no "temblar" al escribir. */
+.step.is-enter { animation: step-in var(--dur-normal) var(--ease-standard); }
 @keyframes step-in {
   from { opacity: 0; transform: translateY(4px); }
   to   { opacity: 1; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .step { animation: none; }
+  .step.is-enter { animation: none; }
 }
 
 /* ---- Card ------------------------------------------------------------ */

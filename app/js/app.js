@@ -48,6 +48,7 @@
   });
 
   let state = initialState();
+  let renderedStep = null; // último paso pintado, para animar solo al cambiar de paso
 
   const setState = (patch) => {
     state = { ...state, ...patch };
@@ -292,7 +293,7 @@
     if (!snap) return;
     const el = document.querySelector('[data-field-id="' + snap.id + '"]');
     if (el) {
-      el.focus();
+      el.focus({ preventScroll: true });
       try {
         el.setSelectionRange(snap.start, snap.end);
       } catch (_) {
@@ -631,6 +632,13 @@
 
     root.appendChild(header);
     root.appendChild(shell);
+
+    // Anima la entrada solo cuando cambió el paso, no en cada re-render por tecleo.
+    if (state.step !== renderedStep) {
+      const stepEl = root.querySelector('.step');
+      if (stepEl) stepEl.classList.add('is-enter');
+      renderedStep = state.step;
+    }
 
     // Botón de tema flotante, discreto
     const themeBtn = document.getElementById('theme-toggle');
